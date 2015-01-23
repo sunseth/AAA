@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+	 	<title>Asian American Association</title>
+	 	<link rel='stylesheet' href='/stylesheets/style.css'>
+	 	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,200,100' rel='stylesheet' type='text/css'>
+	 	<link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	 	<!-- <script src="//code.jquery.com/jquery-2.0.2.min.js"></script> -->
+	 	<script src='/javascripts/jquery.js'></script>
+	 	<script src='/javascripts/handlebars.js'></script>
+	 	<script src='/javascripts/script.js'></script>
+	</head>
+	<body>
+		<nav>
+			<div class='transition' id='nav-title'>
+				<a href='/'>
+					<h1>AAA</h1>
+					<h2>@UC Berkeley</h2>
+				</a>
+			</div>
+			<ul>
+				<li><a id='families-link' href='/families'>Families</a></li>
+				<li><a id='committees-link' href='/committees'>Committees</a></li>
+				<li><a id='cabinet-link' href='/cabinet'>Cabinet</a></li>
+				<li><a id='media-link' href='/media'>Media</a></li>
+			</ul>
+			
+			<div class='transition' id='login-button'>
+				<div id='admin'>Admin</div>
+				<div id='login-pip' class='transition'>Log in</div>
+			</div>
+		</nav>
+		<div id='main-wrapper'>
+			<div id='dark-overlay'></div>
+			<header>Asian American Assocation</header>
+			<main>
+				<div class='main-wrapper'>
+					<h1 class='event-page'>{{title}}</h1>
+					{{#each events}}
+						<div class='event-container'>
+							<div class='event-header'>
+								<div class='event-title'><h1>{{eventTitle}}</h1></div>
+								<div class='event-date'><h2>{{eventDate}}</h2></div>
+							</div>
+							<div class='event-img'><img class='img-scaled' src='{{eventImg}}'></div><div class='event-info'>
+								<div class='event-description'><p>{{eventDescription}}</p></div>
+							</div>
+						</div>
+					{{/each}}
+				</div>
+			</main>
+			<footer>
+				<div>Find us @</div>
+				<a href='https://www.facebook.com/UCBAAA'>Facebook</a>
+				<div>Techno 2015</div>
+			</footer>
+			<div id='login-modal'>
+				<form action='/login' method='POST'>
+					<input type='text' name='username' placeholder='username'>
+					<input type='password' name='password' placeholder='password'>
+					<button type="submit">Log In</button>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

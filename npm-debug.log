@@ -1,0 +1,115 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'c:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.33
+4 verbose readDependencies using package.json deps
+5 verbose install where, deps [ 'c:\\Users\\Seth\\webProjects\\aaav2',
+5 verbose install   [ 'express',
+5 verbose install     'static-favicon',
+5 verbose install     'morgan',
+5 verbose install     'cookie-parser',
+5 verbose install     'body-parser',
+5 verbose install     'debug',
+5 verbose install     'express-handlebars',
+5 verbose install     'mongoose' ] ]
+6 info preinstall aaa@0.0.1
+7 verbose readDependencies using package.json deps
+8 verbose already installed skipping express@~4.0.0 c:\Users\Seth\webProjects\aaav2
+9 verbose already installed skipping static-favicon@~1.0.0 c:\Users\Seth\webProjects\aaav2
+10 verbose already installed skipping morgan@~1.0.0 c:\Users\Seth\webProjects\aaav2
+11 verbose already installed skipping cookie-parser@~1.0.1 c:\Users\Seth\webProjects\aaav2
+12 verbose already installed skipping body-parser@~1.0.0 c:\Users\Seth\webProjects\aaav2
+13 verbose already installed skipping debug@~0.7.4 c:\Users\Seth\webProjects\aaav2
+14 verbose cache add [ 'express-handlebars@^0.5.0', null ]
+15 verbose cache add name=undefined spec="express-handlebars@^0.5.0" args=["express-handlebars@^0.5.0",null]
+16 verbose parsed url { protocol: null,
+16 verbose parsed url   slashes: null,
+16 verbose parsed url   auth: null,
+16 verbose parsed url   host: null,
+16 verbose parsed url   port: null,
+16 verbose parsed url   hostname: null,
+16 verbose parsed url   hash: null,
+16 verbose parsed url   search: null,
+16 verbose parsed url   query: null,
+16 verbose parsed url   pathname: 'express-handlebars@^0.5.0',
+16 verbose parsed url   path: 'express-handlebars@^0.5.0',
+16 verbose parsed url   href: 'express-handlebars@^0.5.0' }
+17 verbose already installed skipping mongoose@^3.8.21 c:\Users\Seth\webProjects\aaav2
+18 verbose cache add name="express-handlebars" spec="^0.5.0" args=["express-handlebars","^0.5.0"]
+19 verbose parsed url { protocol: null,
+19 verbose parsed url   slashes: null,
+19 verbose parsed url   auth: null,
+19 verbose parsed url   host: null,
+19 verbose parsed url   port: null,
+19 verbose parsed url   hostname: null,
+19 verbose parsed url   hash: null,
+19 verbose parsed url   search: null,
+19 verbose parsed url   query: null,
+19 verbose parsed url   pathname: '^0.5.0',
+19 verbose parsed url   path: '^0.5.0',
+19 verbose parsed url   href: '^0.5.0' }
+20 verbose addNamed [ 'express-handlebars', '^0.5.0' ]
+21 verbose addNamed [ null, '>=0.5.0-0 <0.6.0-0' ]
+22 silly lockFile 740eff83-express-handlebars-0-5-0 express-handlebars@^0.5.0
+23 verbose lock express-handlebars@^0.5.0 C:\Users\Seth\AppData\Roaming\npm-cache\740eff83-express-handlebars-0-5-0.lock
+24 silly addNameRange { name: 'express-handlebars',
+24 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
+24 silly addNameRange   hasData: false }
+25 verbose request where is /express-handlebars
+26 verbose request registry https://registry.npmjs.org/
+27 verbose request id fc079e570aebcdcd
+28 verbose url raw /express-handlebars
+29 verbose url resolving [ 'https://registry.npmjs.org/', './express-handlebars' ]
+30 verbose url resolved https://registry.npmjs.org/express-handlebars
+31 verbose request where is https://registry.npmjs.org/express-handlebars
+32 info trying registry request attempt 1 at 20:38:55
+33 http GET https://registry.npmjs.org/express-handlebars
+34 http 200 https://registry.npmjs.org/express-handlebars
+35 silly registry.get cb [ 200,
+35 silly registry.get   { date: 'Wed, 21 Jan 2015 04:39:06 GMT',
+35 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+35 silly registry.get     etag: '"CBKAY76XMK6YZJCPXO09OWYDF"',
+35 silly registry.get     'content-type': 'application/json',
+35 silly registry.get     'cache-control': 'max-age=60',
+35 silly registry.get     'content-length': '35681',
+35 silly registry.get     'accept-ranges': 'bytes',
+35 silly registry.get     via: '1.1 varnish',
+35 silly registry.get     age: '0',
+35 silly registry.get     'x-served-by': 'cache-lax1423-LAX',
+35 silly registry.get     'x-cache': 'HIT',
+35 silly registry.get     'x-cache-hits': '1',
+35 silly registry.get     'x-timer': 'S1421815146.046915,VS0,VE38',
+35 silly registry.get     vary: 'Accept',
+35 silly registry.get     'keep-alive': 'timeout=10, max=50',
+35 silly registry.get     connection: 'Keep-Alive' } ]
+36 silly addNameRange number 2 { name: 'express-handlebars',
+36 silly addNameRange   range: '>=0.5.0-0 <0.6.0-0',
+36 silly addNameRange   hasData: true }
+37 silly addNameRange versions [ 'express-handlebars',
+37 silly addNameRange   [ '0.0.1',
+37 silly addNameRange     '0.0.2',
+37 silly addNameRange     '1.0.0-rc-1',
+37 silly addNameRange     '1.0.0-rc-2',
+37 silly addNameRange     '1.0.0',
+37 silly addNameRange     '1.0.1',
+37 silly addNameRange     '1.0.2',
+37 silly addNameRange     '1.0.3',
+37 silly addNameRange     '1.1.0' ] ]
+38 silly lockFile 740eff83-express-handlebars-0-5-0 express-handlebars@^0.5.0
+39 silly lockFile 740eff83-express-handlebars-0-5-0 express-handlebars@^0.5.0
+40 error notarget No compatible version found: express-handlebars@'>=0.5.0-0 <0.6.0-0'
+40 error notarget Valid install targets:
+40 error notarget ["0.0.1","0.0.2","1.0.0-rc-1","1.0.0-rc-2","1.0.0","1.0.1","1.0.2","1.0.3","1.1.0"]
+40 error notarget
+40 error notarget This is most likely not a problem with npm itself.
+40 error notarget In most cases you or one of your dependencies are requesting
+40 error notarget a package version that doesn't exist.
+41 error System Windows_NT 6.2.9200
+42 error command "c:\\Program Files\\nodejs\\node.exe" "c:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install"
+43 error cwd c:\Users\Seth\webProjects\aaav2
+44 error node -v v0.10.33
+45 error npm -v 1.4.28
+46 error code ETARGET
+47 verbose exit [ 1, true ]
