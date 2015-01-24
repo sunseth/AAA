@@ -48,7 +48,40 @@ function families(req, res) {
 };
 
 function passPassport(app, passport){
+	app.get('/login', function(req, res) {
+        res.render('login.handlebars', { message: req.flash('loginMessage') }); 
+    });
+	app.post('/login', passport.authenticate('local-login', {
+		successRedirect : '/admin',
+		failureRedirect : '/login',
+		failureFlash : true
+	}));
+    app.get('/signup', function(req, res) {
+        res.render('signup.handlebars', { message: req.flash('signupMessage') });
+    });
+    app.post('/signup', passport.authenticate('local-signup', {
+    	successRedirect : '/admin',
+    	failureRedirect : '/signup',
+    	failureFlash : true
+    }));
+	app.get('/admin', isLoggedIn, function(req, res){
+		res.render('admin.handlebars', {
 
+		});
+	});
+
+	app.get('/logout', function(req, res) {
+        req.logout();
+        res.redirect('/');
+    });
+
+}
+
+// route middleware to make sure a user is logged in
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+    res.redirect('/');
 }
 
 // router.get('/committees', function(req, res) {

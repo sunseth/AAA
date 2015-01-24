@@ -25,7 +25,7 @@ var opts = {
     }
 };
 mongoose.connect(configDB.url, opts);
-// require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,7 +50,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 //routing
 routes.passPassport(app, passport);
 app.get('/', routes.home);
-app.get('/login', routes.login);
+app.post('/login', routes.login);
 app.get('/families', routes.families);
 // app.get('/committees', routes.committees);
 // app.get('/cabinet', routes.cabinet);
