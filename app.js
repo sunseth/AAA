@@ -51,6 +51,7 @@ app.use(flash()); // use connect-flash for flash messages stored in session
 routes.passPassport(app, passport);
 app.get('/', routes.home);
 app.post('/login', routes.login);
+app.get('/events', routes.events);
 app.get('/families', routes.families);
 // app.get('/committees', routes.committees);
 // app.get('/cabinet', routes.cabinet);

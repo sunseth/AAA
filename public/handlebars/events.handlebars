@@ -1,0 +1,14 @@
+<div class='main-wrapper'>
+	<h1 class='event-page'>{{title}}</h1>
+	{{#each events}}
+		<div class='event-container'>
+			<div class='event-header'>
+				<div class='event-title'><h1>{{eventTitle}}</h1></div>
+				<div class='event-date'><h2>{{eventDate}}</h2></div>
+			</div>
+			<div class='event-img'><img class='img-scaled' src='{{eventImg}}'></div><div class='event-info'>
+				<div class='event-description'><p>{{eventDescription}}</p></div>
+			</div>
+		</div>
+	{{/each}}
+</div>

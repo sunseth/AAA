@@ -28,6 +28,31 @@ $(document).ready(function(){
 	// 	$('#login-modal').fadeOut('slow');
 	// 	$('#dark-overlay').fadeOut('slow');
 	// });
+	$('#events-link').click(function(event){
+		event.preventDefault();
+		var template;
+		var pageurl = $(this).attr('href');
+		if(pageurl!=window.location){
+			window.history.pushState({path:pageurl},'',pageurl);
+		}
+		$.ajax({
+		    url : '/handlebars/events.handlebars',
+		    success : function (data) {
+		        template = Handlebars.compile(data);
+		    },
+		    dataType: "text",
+		    async : false
+		});
+		$.ajax({
+		    url : '/events',
+		    success : function (data) {
+		        $('main').html(template(JSON.parse(data)));
+		        console.log(data);
+		    },
+		    dataType: "text",
+		    async : false
+		});
+	});
 
 	$('#families-link').click(function(event){
 		event.preventDefault();

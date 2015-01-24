@@ -43,6 +43,10 @@ function login(req, res) {
 	res.render('login.handlebars');
 }
 
+function events(req, res){
+	res.json(sample);
+}
+
 function families(req, res) {
 	res.json(sample1);
 };
@@ -100,3 +104,4 @@ exports.home = home;
 exports.login = login;
 exports.families = families;
 exports.passPassport = passPassport;
+exports.events = events;
