@@ -12,7 +12,7 @@ var Media = require('../models/media.js');
 
 function passPassport(app, passport){
 	app.get('/login', function(req, res) {
-        res.render('login.handlebars', { message: req.flash('loginMessage') }); 
+        res.render('login.handlebars', { message: req.flash('loginMessage'), layout: false }); 
     });
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/admin',
@@ -20,7 +20,7 @@ function passPassport(app, passport){
 		failureFlash : true
 	}));
     app.get('/signup', function(req, res) {
-        res.render('signup.handlebars', { message: req.flash('signupMessage') });
+        res.render('signup.handlebars', { message: req.flash('signupMessage'), layout: false });
     });
     app.post('/signup', passport.authenticate('local-signup', {
     	successRedirect : '/admin',
@@ -85,6 +85,7 @@ function passPassport(app, passport){
                     callback();
                 });
             }], function(){
+                adminJSON['layout'] = false;
                 res.render('admin.handlebars', adminJSON);
         });
 	});
@@ -101,7 +102,7 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 }
 
-function adminPost(app, dir){
+function adminAJAX(app, dir){
     app.post('/admin', function(req, res){
         var submitType = req.query.submission;
         var form = new formidable.IncomingForm();
@@ -204,10 +205,9 @@ function adminPost(app, dir){
                 });
             });
         }
-        
         res.redirect(303, '/admin');
     });
-}
+};
 
 exports.passPassport = passPassport
-exports.adminPost = adminPost;
+exports.adminAJAX = adminAJAX;

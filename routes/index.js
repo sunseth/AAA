@@ -9,12 +9,7 @@ var Media = require('../models/media.js');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-	res.render('home', { layout : false });
-});
-
-/* GET login page. */
-router.get('/login', function(req, res) {
-	res.render('login', { layout: false });
+	res.render('home');
 });
 
 /* GET events page. */
@@ -26,7 +21,7 @@ router.get('/events', function(req, res){
 		}
         jsonEvents['events'] = events;
         jsonEvents['title'] = 'Events';
-        res.render('events.handlebars', jsonEvents);
+        res.render('events', jsonEvents);
 	});
 });
 
@@ -39,8 +34,7 @@ router.get('/families', function(req, res) {
 		}
         jsonFamilies['families'] = families;
         jsonFamilies['title'] = 'Families';
-        // jsonFamilies['layout'] = 'main.handlebars';
-        res.render('families.handlebars', jsonFamilies);
+        res.render('families', jsonFamilies);
 	});
 });
 
@@ -53,7 +47,7 @@ router.get('/committees', function(req, res) {
 		}
         jsonCommittees['committees'] = committees;
         jsonCommittees['title'] = 'Committees';
-        res.render('committees.handlebars', jsonCommittees);
+        res.render('committees', jsonCommittees);
 	});
 });
 
@@ -66,7 +60,7 @@ router.get('/cabinet', function(req, res) {
 		}
         jsonCabinet['cabinet'] = cabinet;
         jsonCabinet['title'] = 'Cabinet';
-        res.render('cabinet.handlebars', jsonCabinet);
+        res.render('cabinet', jsonCabinet);
 	});
 });
 
@@ -79,7 +73,7 @@ router.get('/media', function(req, res) {
 		}
         jsonMedia['media'] = media;
         jsonMedia['title'] = 'Media';
-        res.render('media.handlebars', jsonMedia);
+        res.render('media', jsonMedia);
 	});
 });
 

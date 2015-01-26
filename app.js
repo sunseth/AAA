@@ -30,10 +30,11 @@ require('./config/passport')(passport); // pass passport for configuration
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-var exphbs = require('express3-handlebars');
-var hbs = exphbs.create({});
-app.engine('handlebars', hbs.engine);
+var handlebars = require('express3-handlebars')
+ .create({ defaultLayout:'main' });
+app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
+
 
 app.use(favicon());
 app.use(logger('dev'));
@@ -48,12 +49,11 @@ app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
-//routing
+//routing for admin page
 passportRoute.passPassport(app, passport);
-passportRoute.adminPost(app, __dirname);
+passportRoute.adminAJAX(app, __dirname);
+// routing for main app pages
 app.use('/', routes);
-app.use('/login', routes);
-app.use('/admin', routes);
 app.use('/events', routes);
 app.use('/families', routes);
 app.use('/committees', routes);

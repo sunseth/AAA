@@ -160,35 +160,47 @@ header{
 	font-size: 72px;
 	font-weight: 300;
 	color: #232323;
-	padding: 50px 0px 25px 50px;
+	padding: 40px;
+	text-align: center;
 	border-bottom: 2px solid black;
-	background: #F7F7F2;
+	background-image: url('../images/title-background.jpg');
+	background-size: cover;
+	color: white;
+	text-shadow: 3px 3px 1px rgba(0, 0, 0, 1);
 }
 
 /*homepage styling*/
 
 .home-wrapper{
-	width: 960px;
-	margin: 0 auto;
+	padding: 25px;
 }
 
 .home-wrapper h1{
-	padding: 10px;
+	text-align: center;
+	padding: 30px 0px 20px 0px;
 }
 
+.home-wrapper .home-info-container{
+	width: 75%;
+	margin: 0 auto;
+}
 .home-wrapper p{
 	padding: 10px;
+	line-height: 24px;
 }
 
-.home-wrapper{
-	padding: 15px;
+.home-wrapper h2{
+	padding: 20px 0px 10px 0px;
+	text-align: center;
+	opacity: 0.7;
 }
+
 /*main content area*/
 
 main{
 	background: #F7F7F2;
-	padding-bottom: 25px;
-	padding-top: 25px;
+	padding-bottom: 40px;
+	padding-top: 40px;
 }
 
 .page-title{
@@ -259,7 +271,7 @@ main{
 
 .event-description{
 	padding: 25px;
-	line-height: 18px;
+	line-height: 21px;
 }
 
 /*families styling*/
