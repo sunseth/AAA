@@ -1,107 +1,85 @@
 var express = require('express');
+var router = express.Router();
 
-
-var sample = {
-	title: 'Events',
-	events: [
-		{
-			eventImg: '/images/test.jpg',
-			eventTitle: 'LanB4Time',
-			eventDate: 'Nov 14th',
-			eventDescription: 'join us for an epic lan'
-		},
-		{
-			eventImg: '/images/test1.jpg',
-			eventTitle: 'brunch',
-			eventDate: 'Nov 24th',
-			eventDescription: 'join us for an epic brunch'
-		},
-	],
-};
-
-var sample1 = {
-	families : [
-		{
-			name : 'tripi',
-		},
-		{
-			name : 'kkk'
-		},
-		{
-			name : 'wargame'
-		}
-	]
-}
+var Event = require('../models/event.js');
+var Family = require('../models/family.js');
+var Committee = require('../models/committee.js');
+var Cabinet = require('../models/cabinet.js');
+var Media = require('../models/media.js');
 
 /* GET home page. */
-function home(req, res) {
-  res.render('home.handlebars', sample);
-};
+router.get('/', function(req, res) {
+	res.render('home.handlebars');
+});
 
 /* GET login page. */
-function login(req, res) {
+router.get('/login', function(req, res) {
 	res.render('login.handlebars');
-}
+});
 
-function events(req, res){
-	res.json(sample);
-}
-
-function families(req, res) {
-	res.json(sample1);
-};
-
-function passPassport(app, passport){
-	app.get('/login', function(req, res) {
-        res.render('login.handlebars', { message: req.flash('loginMessage') }); 
-    });
-	app.post('/login', passport.authenticate('local-login', {
-		successRedirect : '/admin',
-		failureRedirect : '/login',
-		failureFlash : true
-	}));
-    app.get('/signup', function(req, res) {
-        res.render('signup.handlebars', { message: req.flash('signupMessage') });
-    });
-    app.post('/signup', passport.authenticate('local-signup', {
-    	successRedirect : '/admin',
-    	failureRedirect : '/signup',
-    	failureFlash : true
-    }));
-	app.get('/admin', isLoggedIn, function(req, res){
-		res.render('admin.handlebars', {
-
-		});
+/* GET events page. */
+router.get('/events', function(req, res){
+	var jsonEvents = {};
+	Event.find({}, function(err, events){
+		if (err){
+			throw err;
+		}
+        jsonEvents['events'] = events;
+        jsonEvents['title'] = 'Events';
+        res.json(jsonEvents);
 	});
+});
 
-	app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
+/* GET families page. */
+router.get('/families', function(req, res) {
+	var jsonFamilies = {};
+	Family.find({}, function(err, families){
+		if (err){
+			throw err;
+		}
+        jsonFamilies['families'] = families;
+        jsonFamilies['title'] = 'Families';
+        res.json(jsonFamilies);
+	});
+});
 
-}
+/* GET committees page. */
+router.get('/committees', function(req, res) {
+	var jsonCommittees = {};
+	Committee.find({}, function(err, committees){
+		if (err){
+			throw err;
+		}
+        jsonCommittees['committees'] = committees;
+        jsonCommittees['title'] = 'Committees';
+        res.json(jsonCommittees);
+	});
+});
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    res.redirect('/');
-}
+/* GET cabinet page. */
+router.get('/cabinet', function(req, res) {
+	var jsonCabinet = {};
+	Cabinet.find({}, function(err, cabinet){
+		if (err){
+			throw err;
+		}
+        jsonCabinet['cabinet'] = cabinet;
+        jsonCabinet['title'] = 'Cabinet';
+        res.json(jsonCabinet);
+	});
+});
 
-// router.get('/committees', function(req, res) {
-//   res.render('committees.handlebars');
-// });
+/* GET media page. */
+router.get('/media', function(req, res) {
+	var jsonMedia = {};
+	Media.find({}, function(err, media){
+		if (err){
+			throw err;
+		}
+        jsonMedia['media'] = media;
+        jsonMedia['title'] = 'Media';
+        res.json(jsonMedia);
+	});
+});
 
-// router.get('/cabinet', function(req, res) {
-//   res.render('cabinet.handlebars');
-// });
-
-// router.get('/media', function(req, res) {
-//   res.render('media.handlebars');
-// });
-
-exports.home = home;
-exports.login = login;
-exports.families = families;
-exports.passPassport = passPassport;
-exports.events = events;
+module.exports = router;

@@ -1,0 +1,208 @@
+/*Global styling*/
+
+*{
+	margin: 0;
+	padding: 0;
+	font-family: 'Raleway', sans-serif;
+}
+
+a{
+	text-decoration: none;
+	color: inherit;
+}
+
+header h1{
+	text-align: center;
+	font-size: 54px;
+	padding: 10px;
+}
+
+.subtitle h2{
+	text-align: center;
+	opacity: 0.75;
+	font-size: 36px;
+	padding: 5px;
+	margin-bottom: 50px;
+}
+
+textarea{
+	display: block;
+	width: calc(100% - 20px);
+	padding: 10px;
+	border: none;
+}
+
+textarea:focus{
+	outline: none;
+}
+
+input {
+	display: block;
+	width: calc(100% - 20px);
+    box-shadow: none;
+    border: none;
+    padding: 10px;
+}
+
+input:focus{
+	outline: none;
+}
+
+form{
+	overflow: hidden;
+}
+
+.transition {
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+	transition: all 0.4s ease-out;
+}
+
+/*logout*/
+
+nav{
+	padding: 10px;
+}
+
+nav div{
+	padding: 10px;
+}
+
+nav div a{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	border: 2px solid gray;
+}
+
+nav div a:hover{
+	border: 2px solid transparent;
+}
+
+/*structural class element styling*/
+.admin-form{
+	width: 960px;
+	margin: 0 auto;
+}
+
+.admin-form h1{
+	background: black;
+	color: white;
+	padding: 10px;
+}
+
+.admin-el{
+	width: 100%;
+	background: black;
+	opacity: 0.75;
+	color: white;
+}
+
+.admin-el-name{
+	display: inline-block;
+	width: 900px;
+	vertical-align: top;
+}
+
+.admin-el-name h1{
+	padding: 10px;
+}
+
+.delete-button{
+	width: 60px;
+	height: 60px;
+	background: red;
+	line-height: 55px;
+	font-size: 48px;
+	font-weight: bold;
+	text-align: center;
+	display: inline-block;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.delete-button:hover{
+	background: white;
+	color: red;
+}
+
+.submit-form{
+	width: 100%;
+	height: 200px;
+}
+
+.submit-form:last-child{
+	border-bottom: 2px solid black;
+}
+
+.submit-form form{
+	height: 100%;
+}
+.input-tags{
+	vertical-align: top;
+	display: inline-block;
+	width: calc(450px - 2px);
+	height: 100%;
+	border-left: 2px solid black;
+}
+
+.input-tags input{
+	border-bottom: 2px solid black;
+}
+
+.input-tags textarea{
+	border-bottom: 2px solid black;
+}
+
+.textarea-tags{
+	vertical-align: top;
+	display: inline-block;
+	width: calc(450px - 2px);
+	height: 100%;
+	border-left: 2px solid black;
+}
+
+.textarea-tags textarea{
+	height: 100%;
+}
+
+.submit-tags{
+	display: inline-block;
+	width: 60px;
+	height: 100%;
+	vertical-align: top;
+}
+
+.submit-tags button{
+	width: 100%;
+	height: 100%;
+	background: green;
+	color: white;
+	font-size: 48px;
+	border: none;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.submit-tags button:hover{
+	background: white;
+	color: green;
+}
+
+.media-links{
+	display: inline-block;
+	width: calc(900px - 2px);
+	height: 100%;
+	vertical-align: top;
+	border-left: 2px solid black;
+}
+
+.media-links input{
+	border-bottom: 2px solid black;
+}
+
+footer{
+	height: 200px;
+}

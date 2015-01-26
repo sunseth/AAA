@@ -11,6 +11,7 @@ var flash    = require('connect-flash');
 var configDB = require('./config/database.js');
 
 var routes = require('./routes/index');
+var passportRoute = require('./routes/passportRouting');
 var users = require('./routes/users');
 
 var app = express();
@@ -20,7 +21,7 @@ app.set('port', process.env.PORT || 5000);
 var opts = {
     server: {
         socketOptions: {
-            keepAlive:1
+            keepAlive : 1
         }
     }
 };
@@ -48,14 +49,16 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
 
 //routing
-routes.passPassport(app, passport);
-app.get('/', routes.home);
-app.post('/login', routes.login);
-app.get('/events', routes.events);
-app.get('/families', routes.families);
-// app.get('/committees', routes.committees);
-// app.get('/cabinet', routes.cabinet);
-// app.get('/media', routes.media);
+passportRoute.passPassport(app, passport);
+passportRoute.adminPost(app, __dirname);
+app.use('/', routes);
+app.use('/login', routes);
+app.use('/admin', routes);
+app.use('/events', routes);
+app.use('/families', routes);
+app.use('/committees', routes);
+app.use('/cabinet', routes);
+app.use('/media', routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {

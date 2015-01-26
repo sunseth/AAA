@@ -8,6 +8,134 @@
 	 	<script src='/javascripts/admin.js'></script>
 	</head>
 	<body>
-		
+		<nav>
+			<div><a class='transition' href='/logout'>Logout</a></div>
+		</nav>
+		<header><h1>Administration</h1></header>
+		<div class='subtitle'><h2>Create and upload</h2></div>
+		<div class='admin-form'>
+			<h1>Events</h1>
+			{{#each events}}
+				<div class='admin-el transition'>
+					<div class='admin-el-name'>
+						<h1>{{name}}</h1>
+					</div><div class='delete-button transition'>
+						-
+					</div>
+				</div>
+			{{/each}}
+			<div class='submit-form'>
+				<form id='event-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=event'>
+					<div class='input-tags'>
+						<input type='text' name='name' placeholder='Name'>
+						<input type='text' name='date' placeholder='Date'>
+						<input type="file" required accept="image/*" name="photo">
+					</div><div class='textarea-tags'>
+						<textarea type='text' rows="10" name='info' placeholder='Info'></textarea>
+					</div><div class='submit-tags'>
+						<button class='transition' type="submit">+</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='admin-form'>
+			<h1>Families</h1>
+			{{#each families}}
+				<div class='admin-el transition'>
+					<div class='admin-el-name'>
+						<h1>{{name}}</h1>
+					</div><div class='delete-button transition'>
+						-
+					</div>
+				</div>
+			{{/each}}
+			<div class='submit-form'>
+				<form id='family-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=family'>
+					<div class='input-tags'>
+						<input type='text' name='name' placeholder='Name'>
+						<input type='text' name='parents' placeholder='Parents (seperate by commas)'>
+						<input type="file" required accept="image/*" name="photo">
+					</div><div class='textarea-tags'>
+						<textarea type='text' rows="10" name='info' placeholder='Info'></textarea>
+					</div><div class='submit-tags'>
+						<button class='transition' type="submit">+</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='admin-form'>
+			<h1>Committees</h1>
+			{{#each committees}}
+				<div class='admin-el transition'>
+					<div class='admin-el-name'>
+						<h1>{{name}}</h1>
+					</div><div class='delete-button transition'>
+						-
+					</div>
+				</div>
+			{{/each}}
+			<div class='submit-form'>
+				<form id='committee-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=committee'>
+					<div class='input-tags'>
+						<input type='text' name='name' placeholder='Name'>
+						<textarea type='text' rows="4" name='projects' placeholder='Projects (seperate by commas)'></textarea>
+					</div><div class='textarea-tags'>
+						<textarea type='text' rows="10" name='info' placeholder='Info'></textarea>
+					</div><div class='submit-tags'>
+						<button class='transition' type="submit">+</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='admin-form'>
+			<h1>Cabinet</h1>
+			{{#each cabinet}}
+				<div class='admin-el transition'>
+					<div class='admin-el-name'>
+						<h1>{{name}}</h1>
+					</div><div class='delete-button transition'>
+						-
+					</div>
+				</div>
+			{{/each}}
+			<div class='submit-form'>
+				<form id='cabinet-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=cabinet'>
+					<div class='input-tags'>
+						<input type='text' name='name' placeholder='Name'>
+						<input type='text' name='position' placeholder='Position'>
+						<input type='text' name='email' placeholder='Email'>
+						<input type="file" required accept="image/*" name="photo">
+					</div><div class='textarea-tags'>
+						<textarea type='text' rows="10" name='bio' placeholder='Bio'></textarea>
+					</div><div class='submit-tags'>
+						<button class='transition' type="submit">+</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class='admin-form'>
+			<h1>Media</h1>
+			{{#each media}}
+				<div class='admin-el transition'>
+					<div class='admin-el-name'>
+						<h1>{{name}}</h1>
+					</div><div class='delete-button transition'>
+						-
+					</div>
+				</div>
+			{{/each}}
+			<div class='submit-form'>
+				<form id='media-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=media'>
+					<div class='media-links'>
+						<input type='text' name='name' placeholder='Name'>
+						<input type='text' name='url' placeholder='Youtube link'>
+					</div><div class='submit-tags'>
+						<button class='transition' type="submit">+</button>
+					</div
+				</form>
+			</div>
+		</div>
+		<footer>
+		</footer>
 	</body>
 </html>
