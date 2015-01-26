@@ -159,15 +159,17 @@ function adminPost(app, dir){
                 });
             });
         } else if(submitType == 'committee'){
-            var projects = fields.projects;
-            projects = projects.split(',');
-            projects.map(function(el){
-                return el.trim();
-            });
-            Committee.create({
-                name : fields.name,
-                info : fields.info,
-                projects : projects
+            form.parse(req, function(err, fields, files){
+                var projects = fields.projects;
+                projects = projects.split(',');
+                projects.map(function(el){
+                    return el.trim();
+                });
+                Committee.create({
+                    name : fields.name,
+                    info : fields.info,
+                    projects : projects
+                });
             });
         } else if(submitType == 'cabinet'){
             var uploadPath = path.join(dir, 'public', 'images', 'cabinet-photos');
@@ -195,9 +197,11 @@ function adminPost(app, dir){
                 });
             });
         } else if(submitType == 'media'){
-            Media.create({
-                name : fields.name,
-                youtubeURL : fields.url
+            form.parse(req, function(err, fields, files){
+                Media.create({
+                    name : fields.name,
+                    youtubeURL : fields.url
+                });
             });
         }
         
