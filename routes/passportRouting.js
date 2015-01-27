@@ -10,6 +10,14 @@ var Committee = require('../models/committee.js');
 var Cabinet = require('../models/cabinet.js');
 var Media = require('../models/media.js');
 
+var modelMap = {
+    'Event' : Event,
+    'Family' : Family,
+    'Committee': Committee,
+    'Cabinet': Cabinet,
+    'Media': Media
+}
+
 function passPassport(app, passport){
 	app.get('/login', function(req, res) {
         res.render('login.handlebars', { message: req.flash('loginMessage'), layout: false }); 
@@ -34,9 +42,6 @@ function passPassport(app, passport){
                 Event.find({}, function(err, events){
                     if (err)
                         throw err
-                    events.map(function(event){
-                        return event['name'];
-                    });
                     adminJSON['events'] = events;
                     callback();
                 });
@@ -45,9 +50,6 @@ function passPassport(app, passport){
                 Family.find({}, function(err, families){
                     if (err)
                         throw err
-                    families.map(function(family){
-                        return family['name'];
-                    });
                     adminJSON['families'] = families;
                     callback();
                 });
@@ -56,9 +58,6 @@ function passPassport(app, passport){
                 Committee.find({}, function(err, committees){
                     if (err)
                         throw err
-                    committees.map(function(committee){
-                        return committee['name'];
-                    });
                     adminJSON['committees'] = committees;
                     callback();
                 });
@@ -67,9 +66,6 @@ function passPassport(app, passport){
                 Cabinet.find({}, function(err, cabinet){
                     if (err)
                         throw err
-                    cabinet.map(function(member){
-                        return member['name'];
-                    });
                     adminJSON['cabinet'] = cabinet;
                     callback();
                 });
@@ -78,9 +74,6 @@ function passPassport(app, passport){
                 Media.find({}, function(err, media){
                     if (err)
                         throw err
-                    media.map(function(video){
-                        return video['name'];
-                    });
                     adminJSON['media'] = media;
                     callback();
                 });
@@ -143,9 +136,13 @@ function adminAJAX(app, dir){
 
                 var parents = fields.parents;
                 parents = parents.split(',');
-                parents.map(function(el){
-                    return el.trim();
-                });
+                var arr = [];
+
+                for (var i in parents){
+                    var str = parents[i].trim();
+                    arr.push({parent: str});
+                }
+
                 fs.rename(tmpPath, targetPath, function(err){
                     if(err){
                         throw err;
@@ -153,7 +150,7 @@ function adminAJAX(app, dir){
                         Family.create({
                         name : fields.name,
                         img : cssImgPath,
-                        parents : parents,
+                        parents : arr,
                         info : fields.info
                     });
                     }
@@ -163,13 +160,17 @@ function adminAJAX(app, dir){
             form.parse(req, function(err, fields, files){
                 var projects = fields.projects;
                 projects = projects.split(',');
-                projects.map(function(el){
-                    return el.trim();
-                });
+                var arr = [];
+
+                for(var i in projects){
+                    var str = projects[i].trim();
+                    arr.push({project: str});
+                }
+
                 Committee.create({
                     name : fields.name,
                     info : fields.info,
-                    projects : projects
+                    projects : arr
                 });
             });
         } else if(submitType == 'cabinet'){
@@ -199,13 +200,19 @@ function adminAJAX(app, dir){
             });
         } else if(submitType == 'media'){
             form.parse(req, function(err, fields, files){
+                var embedLink = 'http://www.youtube.com/embed/' + fields.url;
                 Media.create({
                     name : fields.name,
-                    youtubeURL : fields.url
+                    youtubeURL : embedLink
                 });
             });
         }
         res.redirect(303, '/admin');
+    });
+    app.delete('/admin', function(req, res){
+        console.log(req.body.name, req.body.model);
+        modelMap[req.body.model].find({name: req.body.name}).remove().exec();
+        res.json({success:true});
     });
 };
 

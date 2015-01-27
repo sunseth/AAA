@@ -6,24 +6,21 @@ $(document).ready(function(){
 	$('.media-el-name:last').css('border-bottom', 'none');
 
 	$('.delete-button').click(function(){
+		console.log($(this).data('name'));
+		var delReq = JSON.stringify({
+		    	name: $(this).data('name'),
+		    	model: $(this).data('type')
+		    });
+		var $parent = $(this).parent();
 		$.ajax({
 		    url: '/admin',
 		    type: 'DELETE',
 		    dataType: 'json',
 		    contentType: 'application/json',
-		    data: {
-		    	name: $(this).data('name'),
-		    	model: $(this).data('type');
-		    }
+		    data: delReq,
 		    success: function(result) {
-		        console.log(result);
-		        $(this).parent().slideUp('slow');
+		        $parent.hide();
 		    }
 		});
-	});
-
-	$('button').on('submit', function(event){
-		event.preventDefault();
-		alert($(this).closest('form').data('action'));
 	});
 });

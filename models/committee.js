@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var committeeSchema = mongoose.Schema({
 	name : String,
 	info : String,
-	projects : [String]
+	projects : Object
 });
 
 module.exports = mongoose.model('Committee', committeeSchema);

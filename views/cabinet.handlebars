@@ -1,21 +1,22 @@
 <div class='main-wrapper'>
-	<h1 class='page-title'>{{title}}</h1>
+	<h1 class='page-title cabinet-model-title'>{{title}}</h1>
 	{{#each cabinet}}
 		<div class='cabinet-container'>
 			<div class='cabinet-header'>
 				<div class='cabinet-title'><h1>{{ name }}</h1></div>
 			</div>
-			<div>
-				{{position}}
-			</div>
-			<div>
-				{{email}}
-			</div>
-			<div>
-				<img src='{{img}}'>
-			</div>
-			<div class='cabinet-info'>
-				<div class='cabinet-description'><p>{{ bio }}</p></div>
+			<div class='cabinet-left'>
+				<img class='img-scaled' src='{{img}}'>
+			</div><div class='cabinet-right'>
+				<div class='cabinet-position'>
+					<h2>{{position}}</h2>
+				</div>
+				<div class='cabinet-email'>
+					<h3>{{email}}</h3>
+				</div>
+				<div class='cabinet-info'>
+					<div class='cabinet-description'><p>{{ bio }}</p></div>
+				</div>
 			</div>
 		</div>
 	{{/each}}

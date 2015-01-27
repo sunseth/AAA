@@ -1,15 +1,17 @@
 <div class='main-wrapper'>
-	<h1 class='page-title'>{{title}}</h1>
+	<h1 class='page-title committee-model-title'>{{title}}</h1>
 	{{#each committees}}
 		<div class='committee-container'>
 			<div class='committee-header'>
 				<div class='committee-title'><h1>{{ name }}</h1></div>
 			</div>
-			<div class='committee-info'>
+			<div class='committee-projects'>
+				<h2>Projects</h2>
+				{{#each projects}}
+					<div class='project'><h3>{{project}}</h3></div>
+				{{/each}}
+			</div><div class='committee-info'>
 				<div class='committee-description'><p>{{ info }}</p></div>
-			</div>
-			<div>
-				{{projects}}
 			</div>
 		</div>
 	{{/each}}
