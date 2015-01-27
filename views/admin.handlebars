@@ -5,6 +5,7 @@
 	 	<link rel='stylesheet' href='/stylesheets/admin.css'>
 	 	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,200,100' rel='stylesheet' type='text/css'>
 	 	<script src='/javascripts/jquery.js'></script>
+	 	<script src='/javascripts/handlebars.js'></script>
 	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 	 	<script src='/javascripts/admin.js'></script>
 	</head>
@@ -28,7 +29,7 @@
 				{{/each}}
 			</div>
 			<div class='submit-form'>
-				<form id='event-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=event'>
+				<form class='submit-post' id='event-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=event'>
 					<div class='input-tags'>
 						<input type='text' name='name' placeholder='Name'>
 						<input type='text' name='date' placeholder='Date'>
@@ -43,17 +44,19 @@
 		</div>
 		<div class='admin-form'>
 			<h1>Families</h1>
-			{{#each families}}
-				<div class='admin-el transition'>
-					<div class='admin-el-name family-el-name'>
-						<h2>{{name}}</h2>
-					</div><div class='delete-button transition' data-name='{{name}}' data-type='Family'>
-						-
+			<div id='family-list'>
+				{{#each families}}
+					<div class='admin-el transition'>
+						<div class='admin-el-name family-el-name'>
+							<h2>{{name}}</h2>
+						</div><div class='delete-button transition' data-name='{{name}}' data-type='Family'>
+							-
+						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 			<div class='submit-form'>
-				<form id='family-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=family'>
+				<form class='submit-post' id='family-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=family'>
 					<div class='input-tags'>
 						<input type='text' name='name' placeholder='Name'>
 						<input type='text' name='parents' placeholder='Parents (seperate by commas)'>
@@ -68,17 +71,19 @@
 		</div>
 		<div class='admin-form'>
 			<h1>Committees</h1>
-			{{#each committees}}
-				<div class='admin-el transition'>
-					<div class='admin-el-name committee-el-name'>
-						<h2>{{name}}</h2>
-					</div><div class='delete-button transition'data-name='{{name}}' data-type='Committee'>
-						-
+			<div id='committee-list'>
+				{{#each committees}}
+					<div class='admin-el transition'>
+						<div class='admin-el-name committee-el-name'>
+							<h2>{{name}}</h2>
+						</div><div class='delete-button transition'data-name='{{name}}' data-type='Committee'>
+							-
+						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 			<div class='submit-form'>
-				<form id='committee-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=committee'>
+				<form class='submit-post' id='committee-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=committee'>
 					<div class='input-tags'>
 						<input type='text' name='name' placeholder='Name'>
 						<textarea type='text' rows="4" name='projects' placeholder='Projects (seperate by commas)'></textarea>
@@ -102,7 +107,7 @@
 				</div>
 			{{/each}}
 			<div class='submit-form'>
-				<form id='cabinet-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=cabinet'>
+				<form class='submit-post' id='cabinet-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=cabinet'>
 					<div class='input-tags'>
 						<input type='text' name='name' placeholder='Name'>
 						<input type='text' name='position' placeholder='Position'>
@@ -128,7 +133,7 @@
 				</div>
 			{{/each}}
 			<div class='submit-form'>
-				<form id='media-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=media'>
+				<form class='submit-post' id='media-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=media'>
 					<div class='media-links'>
 						<input type='text' name='name' placeholder='Name'>
 						<input type='text' name='url' placeholder='Youtube Link ID'>
