@@ -99,6 +99,7 @@ function adminAJAX(app, dir){
     app.post('/admin', function(req, res){
         var submitType = req.query.submission;
         var form = new formidable.IncomingForm();
+        var responseObj;
 
         if(submitType == 'event'){
             var uploadPath = path.join(dir, 'public', 'images', 'event-photos');
@@ -114,12 +115,14 @@ function adminAJAX(app, dir){
                     if(err){
                         throw err
                     } else {
-                        Event.create({
-                        img : cssImgPath,
-                        name : fields.name,
-                        date : fields.date,
-                        info : fields.info
-                    });
+                        responseObj = {
+                            img : cssImgPath,
+                            name : fields.name,
+                            date : fields.date,
+                            info : fields.info
+                        }
+                        Event.create(responseObj);
+                        res.json(JSON.stringify(responseObj));
                     }
                 });
             });
@@ -147,12 +150,14 @@ function adminAJAX(app, dir){
                     if(err){
                         throw err;
                     } else {
-                        Family.create({
-                        name : fields.name,
-                        img : cssImgPath,
-                        parents : arr,
-                        info : fields.info
-                    });
+                        responseObj = {
+                            name : fields.name,
+                            img : cssImgPath,
+                            parents : arr,
+                            info : fields.info
+                        }
+                        Family.create(responseObj);
+                        res.json(JSON.stringify(responseObj));
                     }
                 });
             });
@@ -166,12 +171,13 @@ function adminAJAX(app, dir){
                     var str = projects[i].trim();
                     arr.push({project: str});
                 }
-
-                Committee.create({
+                responseObj = {
                     name : fields.name,
                     info : fields.info,
                     projects : arr
-                });
+                }
+                Committee.create(responseObj);
+                res.json(JSON.stringify(responseObj));
             });
         } else if(submitType == 'cabinet'){
             var uploadPath = path.join(dir, 'public', 'images', 'cabinet-photos');
@@ -188,29 +194,31 @@ function adminAJAX(app, dir){
                     if(err){
                         throw err;
                     } else {
-                        Cabinet.create({
-                        name : fields.name,
-                        position: fields.position,
-                        email : fields.email,
-                        bio : fields.bio,
-                        img : cssImgPath
-                    });
+                        responseObj = {
+                            name : fields.name,
+                            position: fields.position,
+                            email : fields.email,
+                            bio : fields.bio,
+                            img : cssImgPath
+                        }
+                        Cabinet.create(responseObj);
+                        res.json(JSON.stringify(responseObj));
                     }
                 });
             });
         } else if(submitType == 'media'){
             form.parse(req, function(err, fields, files){
                 var embedLink = 'http://www.youtube.com/embed/' + fields.url;
-                Media.create({
+                responseObj = {
                     name : fields.name,
                     youtubeURL : embedLink
-                });
+                }
+                Media.create(responseObj);
+                res.json(JSON.stringify(responseObj));
             });
         }
-        res.redirect(303, '/admin');
     });
     app.delete('/admin', function(req, res){
-        console.log(req.body.name, req.body.model);
         modelMap[req.body.model].find({name: req.body.name}).remove().exec();
         res.json({success:true});
     });

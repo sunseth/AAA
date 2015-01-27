@@ -5,6 +5,7 @@
 	 	<link rel='stylesheet' href='/stylesheets/admin.css'>
 	 	<link href='//fonts.googleapis.com/css?family=Raleway:400,300,200,100' rel='stylesheet' type='text/css'>
 	 	<script src='/javascripts/jquery.js'></script>
+	 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
 	 	<script src='/javascripts/admin.js'></script>
 	</head>
 	<body>
@@ -15,15 +16,17 @@
 		<div class='subtitle'><h2>Create and upload</h2></div>
 		<div class='admin-form'>
 			<h1>Events</h1>
-			{{#each events}}
-				<div class='admin-el transition'>
-					<div class='admin-el-name event-el-name'>
-						<h2>{{name}}</h2>
-					</div><div class='delete-button transition' data-name='{{name}}' data-type='Event'>
-						-
+			<div id='event-list'>
+				{{#each events}}
+					<div class='admin-el transition'>
+						<div class='admin-el-name event-el-name'>
+							<h2>{{name}}</h2>
+						</div><div class='delete-button transition' data-name='{{name}}' data-type='Event'>
+							-
+						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 			<div class='submit-form'>
 				<form id='event-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=event'>
 					<div class='input-tags'>

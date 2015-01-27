@@ -6,7 +6,6 @@ $(document).ready(function(){
 	$('.media-el-name:last').css('border-bottom', 'none');
 
 	$('.delete-button').click(function(){
-		console.log($(this).data('name'));
 		var delReq = JSON.stringify({
 		    	name: $(this).data('name'),
 		    	model: $(this).data('type')
@@ -18,9 +17,39 @@ $(document).ready(function(){
 		    dataType: 'json',
 		    contentType: 'application/json',
 		    data: delReq,
-		    success: function(result) {
+		    success: function(response) {
 		        $parent.hide();
+		    }, 
+		    error: function(err){
+		    	console.error(err);
 		    }
 		});
+	});
+
+	$('#event-submit').on('submit', function(evt){
+		var formURL = $(this).attr('action');
+		var formData = new FormData($('form')[0]);
+		$.ajax({
+			url: formURL,
+			data: formData,
+			type: 'POST',
+			contentType: false,
+			processData: false,
+			success: function(data){
+				var dataObj = JSON.parse(data);
+				// $.ajax({
+				// 	url: '/handlebars/event-list-item.handlebars',
+				// 	dataType: 'text',
+				// 	success:
+				// });
+				$('#event-list').append('<div>''</div>');
+				$('#event-submit div input').val('');
+				$('event-submit div textarea').val('');
+			},
+			error: function(err){
+				console.error(err);
+			}
+		});
+		evt.preventDefault();
 	});
 });
