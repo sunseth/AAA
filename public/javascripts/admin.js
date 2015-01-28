@@ -21,11 +21,51 @@ $(document).ready(function(){
 		});
 	});
 
-	$('#event-submit').on('submit', function(evt){
-		var formURL = $(this).attr('action');
-		var formData = new FormData($('form')[0]);
+	$('.submit-post').on('submit', function(event){
+		var id = $(this).attr('id');
+		var url = $(this).attr('action');
+		var formData;
+		if (id=='event-submit'){
+			formData = new FormData($('form')[0]);
+			
+			ajaxAdd(url, formData, '/handlebars/event-list-item.handlebars', $('#event-list'), 
+				$('#event-submit div input'), $('#event-submit div textarea'));
+
+		} else if (id=='family-submit'){
+			formData = new FormData($('form')[1]);
+
+			ajaxAdd(url, formData, '/handlebars/family-list-item.handlebars', $('#family-list'), 
+				$('#family-submit div input'), $('#family-submit div textarea'));
+
+		} else if (id=='committee-submit'){
+			formData = new FormData($('form')[2]);
+
+			ajaxAdd(url, formData, '/handlebars/committee-list-item.handlebars', $('#committee-list'), 
+				$('#committee-submit div input'), $('#committee-submit div textarea'));
+
+		} else if (id=='cabinet-submit'){
+			formData = new FormData($('form')[3]);
+
+			ajaxAdd(url, formData, '/handlebars/cabinet-list-item.handlebars', $('#cabinet-list'), 
+				$('#cabinet-submit div input'), $('#cabinet-submit div textarea'));
+
+		} else if (id=='media-submit'){
+			formData = new FormData($('form')[4]);
+
+			ajaxAdd(url, formData, '/handlebars/media-list-item.handlebars', $('#media-list'), 
+				$('#media-submit div input'), $('#media-submit div textarea'));
+
+		} else {
+
+			console.error('Invalid form');
+
+		}
+		event.preventDefault();
+	});
+
+	function ajaxAdd(url, formData, handlebarsPath, addTo, inputClean, textareaClean){
 		$.ajax({
-			url: formURL,
+			url: url,
 			data: formData,
 			type: 'POST',
 			contentType: false,
@@ -33,75 +73,20 @@ $(document).ready(function(){
 			success: function(data){
 				var dataObj = JSON.parse(data);
 				$.ajax({
-					url: '/handlebars/event-list-item.handlebars',
+					url: handlebarsPath,
 					dataType: 'text',
 					success: function(hbs){
 						var template = Handlebars.compile(hbs);
 						var listElement = template(dataObj);
-						$('#event-list').append(listElement);
+						addTo.append(listElement);
 					}
 				});
-				$('#event-submit div input').val('');
-				$('#event-submit div textarea').val('');
+				inputClean.val('');
+				textareaClean.val('');
 			},
 			error: function(err){
 				console.error(err);
 			}
 		});
-		evt.preventDefault();
-	});
-
-	$('#family-submit').on('submit', function(evt){
-		var formURL = $(this).attr('action');
-		var formData = new FormData($('form')[1]);
-		$.ajax({
-			url: formURL,
-			data: formData,
-			type: 'POST',
-			contentType: false,
-			processData: false,
-			success: function(data){
-				var dataObj = JSON.parse(data);
-				$.ajax({
-					url: '/handlebars/family-list-item.handlebars',
-					dataType: 'text',
-					success: function(hbs){
-						var template = Handlebars.compile(hbs);
-						var listElement = template(dataObj);
-						$('#family-list').append(listElement);
-					}
-				});
-				$('#family-submit div input').val('');
-				$('#family-submit div textarea').val('');
-			},
-			error: function(err){
-				console.error(err);
-			}
-		});
-		evt.preventDefault();
-	});
-
-	// $('.submit-post').on('submit', function(event){
-	// 	var id = $(this).attr('id');
-	// 	var url = $(this).attr('action');
-	// 	if (id=='event-submit'){
-	// 		ajaxAdd(url, 0, '/handlebars/event-list-item.handlebars', $('#family-list'), 
-	// 			$('#family-submit div input'), $('#family-submit div textarea'));
-	// 	} else if (id=='family-submit'){
-
-	// 	} else if (id=='committee-submit'){
-
-	// 	} else if (id=='cabinet-submit'){
-
-	// 	} else if (id=='media-submit'){
-
-	// 	} else {
-	// 		console.error('Invalid form');
-	// 	}
-	// 	event.preventDefault();
-	// });
-
-	// function ajaxAdd(url, formNum, handlebarsPath, addTo, inputClean, textareaClean){
-
-	// }
+	}
 });

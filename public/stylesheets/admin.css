@@ -97,13 +97,13 @@ nav div a:hover{
 	width: 100%;
 	background: rgba(0, 0, 0, 0.75);
 	color: white;
+	border-bottom: 1px solid;
 }
 
 .admin-el-name{
 	display: inline-block;
 	width: 900px;
 	vertical-align: top;
-	border-bottom: 1px solid;
 }
 
 .admin-el-name h2{
@@ -111,16 +111,17 @@ nav div a:hover{
 }
 
 .delete-button{
-	width: 60px;
-	height: 60px;
+	width: calc(60px - 8px);
+	height: calc(60px - 8px);
 	background: red;
-	line-height: 55px;
+	line-height: 48px;
 	font-size: 48px;
 	font-weight: bold;
 	text-align: center;
 	display: inline-block;
 	cursor: hand;
 	cursor: pointer;
+	border: 4px solid red;
 }
 
 .delete-button:hover{
@@ -189,6 +190,7 @@ nav div a:hover{
 .submit-tags button:hover{
 	background: white;
 	color: green;
+	border: 4px solid green;
 }
 
 .media-links{

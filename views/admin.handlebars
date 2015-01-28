@@ -97,15 +97,17 @@
 		</div>
 		<div class='admin-form'>
 			<h1>Cabinet</h1>
-			{{#each cabinet}}
-				<div class='admin-el transition'>
-					<div class='admin-el-name cabinet-el-name'>
-						<h2>{{name}}</h2>
-					</div><div class='delete-button transition' data-name='{{name}}' data-type='Cabinet'>
-						-
+			<div id='cabinet-list'>
+				{{#each cabinet}}
+					<div class='admin-el transition'>
+						<div class='admin-el-name cabinet-el-name'>
+							<h2>{{name}}</h2>
+						</div><div class='delete-button transition' data-name='{{name}}' data-type='Cabinet'>
+							-
+						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 			<div class='submit-form'>
 				<form class='submit-post' id='cabinet-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=cabinet'>
 					<div class='input-tags'>
@@ -123,15 +125,17 @@
 		</div>
 		<div class='admin-form'>
 			<h1>Media</h1>
-			{{#each media}}
-				<div class='admin-el transition'>
-					<div class='admin-el-name media-el-name'>
-						<h2>{{name}}</h2>
-					</div><div class='delete-button transition' data-name='{{name}}' data-type='Media'>
-						-
+			<div id='media-list'>
+				{{#each media}}
+					<div class='admin-el transition'>
+						<div class='admin-el-name media-el-name'>
+							<h2>{{name}}</h2>
+						</div><div class='delete-button transition' data-name='{{name}}' data-type='Media'>
+							-
+						</div>
 					</div>
-				</div>
-			{{/each}}
+				{{/each}}
+			</div>
 			<div class='submit-form'>
 				<form class='submit-post' id='media-submit' role='form' enctype="multipart/form-data" method='POST' action='/admin?submission=media'>
 					<div class='media-links'>

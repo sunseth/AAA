@@ -147,6 +147,7 @@ nav ul li:hover{
 }
 
 /*main body*/
+
 #page-wrapper{
 	padding-left: 200px;
 	position: relative;
@@ -240,6 +241,7 @@ main{
 	max-height: 420px;
 	overflow: hidden;
 	display: inline-block;
+	vertical-align: top;
 }
 
 .event-img img{
@@ -316,9 +318,10 @@ main{
 	margin: 0 auto;
 }
 
-.family-parents .parent-block{
+.parent-block{
 	padding: 10px;
 	display: inline-block;
+	opacity: 0.7;
 }
 
 .family-info{
@@ -446,6 +449,7 @@ main{
 }
 
 /*footer*/
+
 footer{
 	position: relative;
 	bottom: 0px;
