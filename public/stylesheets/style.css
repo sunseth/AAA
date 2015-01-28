@@ -66,6 +66,17 @@ nav ul li:hover{
 	background: black;
 }
 
+.link{
+	text-decoration: none;
+	color: inherit;
+	font-family: 'Raleway', sans-serif;
+}
+
+.link:hover{
+	text-decoration: none;
+	color: inherit;
+}
+
 #nav-title{
 	color: white;
 	text-align: center;
