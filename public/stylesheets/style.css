@@ -477,10 +477,20 @@ footer{
 @media (max-width: 1200px) {
 	header{
 		font-size: 60px;
+		padding: 10px;
 	}
 
 	.main-wrapper{
 		width: 600px;
+	}
+
+	#home-wrapper{
+		width: 100%;
+		padding: 0px;
+	}
+
+	.page-title{
+		font-size: 48px;
 	}
 
 	.event-img{
@@ -528,6 +538,10 @@ footer{
 
 	#nav-title a h2{
 		font-size: 20px;
+	}
+
+	.page-title{
+		font-size: 42px;
 	}
 
 	#admin{

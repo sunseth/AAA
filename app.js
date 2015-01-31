@@ -4,6 +4,7 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var compression = require('compression');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var session = require('express-session');
@@ -35,7 +36,7 @@ var handlebars = require('express3-handlebars')
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
-
+app.use(compression({threshold: 512}));
 app.use(favicon());
 app.use(logger('dev'));
 app.use(bodyParser.json());

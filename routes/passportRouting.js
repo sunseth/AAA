@@ -208,7 +208,7 @@ function adminAJAX(app, dir){
             });
         } else if(submitType == 'media'){
             form.parse(req, function(err, fields, files){
-                var embedLink = 'http://www.youtube.com/embed/' + fields.url;
+                var embedLink = 'https://www.youtube.com/embed/' + fields.url;
                 responseObj = {
                     name : fields.name,
                     youtubeURL : embedLink
