@@ -189,6 +189,13 @@ nav ul li:hover{
 	height: 100%;
 }
 
+#login-wrapper{
+	padding-left: 200px;
+	position: relative;
+	height: 100vh;
+	background: #F7F7F2;
+}
+
 /*main title*/
 
 header{
@@ -242,6 +249,10 @@ main{
 	background: #F7F7F2;
 	padding-bottom: 25px;
 	padding-top: 25px;
+}
+
+.login-main{
+	padding-top: 125px;
 }
 
 .page-title{
@@ -641,6 +652,10 @@ footer{
 
 @media (max-width: 900px) {
 	#page-wrapper{
+		padding-left: 160px;
+	}
+
+	#login-wrapper{
 		padding-left: 160px;
 	}
 
